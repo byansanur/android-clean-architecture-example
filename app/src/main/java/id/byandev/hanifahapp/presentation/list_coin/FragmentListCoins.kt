@@ -2,21 +2,16 @@ package id.byandev.hanifahapp.presentation.list_coin
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import id.byandev.hanifahapp.R
 import id.byandev.hanifahapp.adapter.AdapterCoins
-import id.byandev.hanifahapp.common.Resource
 import id.byandev.hanifahapp.databinding.FragmentListCoinsBinding
-import id.byandev.hanifahapp.domain.model.Coin
-import java.util.ArrayList
-import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass.
@@ -29,7 +24,6 @@ class FragmentListCoins : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var adapterCoins: AdapterCoins
-    private var listCoins: MutableList<Coin> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,10 +42,6 @@ class FragmentListCoins : Fragment() {
             adapter = adapterCoins
             layoutManager = LinearLayoutManager(context)
         }
-
-        viewModel.ls.observe(viewLifecycleOwner, {
-            it.data?.let { it1 -> adapterCoins.setData(it1) }
-        })
 
         viewModel.state.observe(viewLifecycleOwner, {
             if (it.isLoading) {

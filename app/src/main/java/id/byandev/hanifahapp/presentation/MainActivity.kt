@@ -14,10 +14,3 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 }
-
-/*
-base url
-https://islamic-api-indonesia.herokuapp.com
-https://masjid-api-indonesia.herokuapp.com
-
- */
